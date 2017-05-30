@@ -34,8 +34,48 @@ compound Prolog terms meant to be treated as named collections taking
 advantage of arg/3 to access data by index and nb_setarg/3 to modify
 these data in-place.
 
+Iterm indices
+-------------
+
+The arity of an iterm may range from 0 to whatever is the effective
+limit of your hardware. Accordingly, the valid range of indices of an
+iterm, is an enumeration of the arguments of the iterm, which informs
+the choice of iterm starting indices: the first index of an iterm is
+either 1, for an iterm with at least one argument, or 0, for an iterm
+with 0 arguments.
+
+In other words, for an iterm of arity a, with starting index i:
+
+==
+     | 1    if a > 0
+i = <
+     | 0    if a = 0
+==
+
+Additionally, predicates in this module allow negative indices to be
+used to access iterm arguments in descending order. For example, an
+iterm of arity 3 may be accessed with any of the indices in
+{-3,-2,-1,1,2,3}, where -3 and 1 would both access the first argument of
+the iterm. Refer to the documentation of iterm_index/3 for a more
+detailed discussion of positive and negative iterm indices.
+
+The choice of variable starting indices, may appear a little peculiar -
+in most languages the indices of random-access data structures either
+start at 0, or 1 (though a few, like Ada and Fortran allow the user to
+specify their own range, which this module doesn't). When in doubt,
+iterm_index/3 may be used to clarify any misunderstandings about the
+valid range of iterms' indices.
+
 Usage
 ----
+
+This module is meant to be used as a library for Swi-Prolog. Add it to
+your project and include it in your code in the usual way, with a
+use_module/1 directive:
+
+==
+use_module(lib(indexed_terms)).
+==
 
 Predicates in this module fall into two broad types: on the one hand,
 predicates for creating, indexing and accessing iterms, and on the
@@ -129,39 +169,6 @@ predicates are made public in this module: these are window_span/3,
 window_size/5 and maximum_stride/4. These can be used to reason about
 the effects of any window/6 parameter values that give unexpected
 results.
-
-Indexing iterms
----------------
-
-The arity of an iterm may range from 0 to whatever is the effective
-limit of your hardware. Accordingly, the valid range of indices of an
-iterm, is an enumeration of the arguments of the iterm, which informs
-the choice of iterm starting indices: the first index of an iterm is
-either 1, for an iterm with at least one argument, or 0, for an iterm
-with 0 arguments.
-
-In other words, for an iterm of arity a, with starting index i:
-
-==
-     / 1    if a > 0
-i = <
-     \ 0    if a = 0
-==
-
-Additionally, predicates in this module allow negative indices to be
-used to access iterm arguments in descending order. For example, an
-iterm of arity 3 may be accessed with any of the indices in
-{-3,-2,-1,1,2,3}, where -3 and 1 would both access the first argument of
-the iterm. Refer to the documentation of iterm_index/3 for a more
-detailed discussion of positive and negative iterm indices.
-
-The choice of variable starting indices, may appear a little peculiar -
-in most languages the indices of random-access data structures either
-start at 0, or 1 (though a few, like Ada and Fortran allow the user to
-specify their own range, which this module doesn't). When in doubt,
-iterm_index/3 may be used to clarify any misunderstandings about the
-valid range of iterms' indices.
-
 
 Motivation
 ----------
