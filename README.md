@@ -10,14 +10,14 @@ compound Prolog terms meant to be treated as named collections taking
 advantage of arg/3 to access data by index and nb_setarg/3 to modify
 these data in-place.
 
-##Usage
+## Usage
 
 Predicates in this module fall into two broad types: on the one hand,
 predicates for creating, indexing and accessing iterms, and on the
 other, predicates for selecting ranges of arguments of iterms between
 two indices.
 
-###Creating iterms
+### Creating iterms
 
 Predicates iterm/3, typed_iterm/4, blank_iterm/3, init_iterm/4,
 sequence/5 and sequence/6 may be used to create iterms from a functor
@@ -111,7 +111,7 @@ amount. The latter may be useful for tasks typically accomplished by
     S = s(1, 2, 3, 4, 5),
     S_ = s(1, 2, 3, 4, 5, _4170, _4172, _4174, _4176, _4178).
 
-###Selecting iterm arguments
+### Selecting iterm arguments
 
 subterm/3, slice/4, dice/3 and window/6 may be used to select a sub-set
 of the arguments of an iterm, as a new iterm with the same functor name.
