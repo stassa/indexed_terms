@@ -47,12 +47,11 @@ least one argument, or 0, for an iterm with 0 arguments.
 
 In other words, for an iterm of arity a, with starting index i:
 
-
-    ```
-          / 1    if a > 0
-    i = <
-          \ 0    if a = 0
-    ```
+```
+      / 1    if a > 0
+i = <
+      \ 0    if a = 0
+```
 
 Additionally, predicates in this module allow negative indices to be used to
 access iterm arguments in descending order. For example, an iterm of arity 3 may
