@@ -1,4 +1,4 @@
-:-use_module(indexed_terms).
+:-use_module(prolog/src/indexed_terms).
 :-use_module(test_helpers).
 
 /*

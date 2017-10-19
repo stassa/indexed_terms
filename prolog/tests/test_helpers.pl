@@ -3,7 +3,7 @@
                        ,partly_random_iterm/11
 		       ]).
 
-:-use_module(indexed_terms).
+:-use_module(prolog/src/indexed_terms).
 
 
 %!	alphabetic_sequence(+Width,-Sequence) is det.
