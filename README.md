@@ -3,7 +3,7 @@ Indexed data structures for Swi-Prolog
 
 Predicates to facilitate creating, initialising, accessing and manipulating
 indexed terms, to be used as the building blocks of arrays, vectors and
-matrices.
+matrices (a.k.a. "tensors").
 
 In the context of this module, "Indexed terms" (iterms, for short) are compound
 Prolog terms meant to be treated as named collections taking advantage of arg/3
@@ -12,8 +12,8 @@ to access data by index and nb_setarg/3 to modify these data in-place.
 ## Using indexed_terms
 
 indexed_terms is designed to be used with Swi-Prolog and will probably not be
-compatible with other Prolog systems. A version of Swi-Prolog from 7.0 above is
-required.
+entirely compatible with other Prolog systems. A version of Swi-Prolog from 7.0
+and above is required.
 
 This module is meant to be used as a library. Add it to your project and include
 it in your code in the usual way, with a use_module/1 directive.
@@ -36,6 +36,9 @@ run the tests manually, use run_tests/[0,1]:
 
 Inspect the test file, src(indexed_terms.plt) for more information on the tests
 themselves and on the usage of the predicates in this module.
+
+To stop the tests from running when the project loads, edit the project load
+file, load_project.pl (in the project rood directory).
 
 ## Iterm indices 
 
@@ -298,6 +301,11 @@ performance. On the other hand, the creator of this library considers the most
 important aspect of her work to be the formal declaration of a useful public
 interface for indexed terms, which can them be re-implemented as foreign
 language predicates, if world-class performance proves to be a requirement.
+
+Although the predicates in this library may be used already to treat Prolog
+compound terms as "arrays" its creator has avoided the use of "array" in its
+naming conscious of the fact that the ideal interface for an actual array
+library is open to much discussion.
 
 The usual caveats concerning deviating from the logical, declarative and
 immutable paradigm that typically accompany every use of arg/3, setarg/3 and
